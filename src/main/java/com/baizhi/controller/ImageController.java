@@ -81,7 +81,6 @@ public class ImageController {
     @RequestMapping("/delete")
     @ResponseBody
     public void delete(int id,HttpServletRequest request) {
-        System.out.println(id);
         imageService.delete(id,request);
     }
 }

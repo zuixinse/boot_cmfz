@@ -36,7 +36,6 @@ public class UserServiceImpl implements UserService {
             map.put("message", "正确");
             map.put("user", user1);
             session.setAttribute("user",user1);
-            System.out.println(session.getAttribute("user"));
         }
         return map;
 

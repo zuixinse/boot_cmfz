@@ -35,7 +35,6 @@ public class LogAOP  {
         //谁
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         String name = ((User) requestAttributes.getRequest().getSession().getAttribute("user")).getName();
-       logger.debug(name);
         //干了什么
         MethodSignature signature = (MethodSignature) proceedingJoinPoint.getSignature();
         Method method1 = signature.getMethod();
@@ -49,9 +48,11 @@ public class LogAOP  {
             proceed = proceedingJoinPoint.proceed();
             flag=true;
             flags="成功";
+            logger.debug(flags);
         }catch (Throwable e){
             flag=false;
             flags="失败";
+            logger.debug(flags);
             e.printStackTrace();
         }
         AdminLog adminLog=new AdminLog(UUID.randomUUID().toString(),name,method,date,flags);
